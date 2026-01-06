@@ -3,7 +3,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
-gtag('config', 'GA_MEASUREMENT_ID'); // Substitua 'GA_MEASUREMENT_ID' pelo seu ID de acompanhamento real
+gtag('config', 'G-6XW8NF67DB'); // Substitua 'GA_MEASUREMENT_ID' pelo seu ID de acompanhamento real
 
 // Menu Mobile Toggle
 const hamburger = document.querySelector('.hamburger');
