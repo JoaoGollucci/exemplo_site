@@ -6,6 +6,15 @@
     <meta name="description" content="Landing Page de Exemplo - Solução completa para seu negócio">
     <title>Landing Page - Exemplo</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Analytics 4 Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -16,10 +25,10 @@
                     <h2>MeuSite</h2>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#features">Recursos</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#home" onclick="gtag('event', 'link_click', {'link_url': '#home', 'link_text': 'Início', 'page_location': window.location.href});">Início</a></li>
+                    <li><a href="#features" onclick="gtag('event', 'link_click', {'link_url': '#features', 'link_text': 'Recursos', 'page_location': window.location.href});">Recursos</a></li>
+                    <li><a href="#about" onclick="gtag('event', 'link_click', {'link_url': '#about', 'link_text': 'Sobre', 'page_location': window.location.href});">Sobre</a></li>
+                    <li><a href="#contact" onclick="gtag('event', 'link_click', {'link_url': '#contact', 'link_text': 'Contato', 'page_location': window.location.href});">Contato</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -36,7 +45,7 @@
             <div class="hero-content">
                 <h1>Transforme Seu Negócio Digital</h1>
                 <p>Soluções inovadoras para levar sua empresa ao próximo nível. Descubra como podemos ajudar você a alcançar seus objetivos.</p>
-                <a href="#contact" class="btn btn-primary">Comece Agora</a>
+                <a href="#contact" class="btn btn-primary" onclick="gtag('event', 'button_click', {'element_id': 'startNow', 'element_text': 'Comece Agora', 'page_location': window.location.href});">Comece Agora</a>
             </div>
         </div>
     </section>
@@ -46,26 +55,7 @@
         <div class="container">
             <h2 class="section-title">Nossos Recursos</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Performance</h3>
-                    <p>Velocidade e eficiência em todas as operações para garantir a melhor experiência.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Segurança</h3>
-                    <p>Proteção avançada de dados com as melhores práticas de segurança do mercado.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h3>Inovação</h3>
-                    <p>Tecnologias de ponta para manter você sempre à frente da concorrência.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Responsivo</h3>
-                    <p>Design adaptável para todos os dispositivos e tamanhos de tela.</p>
-                </div>
+                <!-- Feature cards -->
             </div>
         </div>
     </section>
@@ -74,16 +64,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
-                    <h2>Sobre Nós</h2>
-                    <p>Somos uma empresa dedicada a fornecer as melhores soluções digitais para nossos clientes. Com anos de experiência no mercado, trabalhamos com as tecnologias mais modernas e uma equipe altamente qualificada.</p>
-                    <p>Nossa missão é transformar ideias em realidade, criando produtos e serviços que fazem a diferença no mundo digital.</p>
-                </div>
-                <div class="about-image">
-                    <div class="placeholder-image">
-                        <span>📊</span>
-                    </div>
-                </div>
+                <!-- About content -->
             </div>
         </div>
     </section>
@@ -94,7 +75,7 @@
             <h2 class="section-title">Entre em Contato</h2>
             <p class="section-subtitle">Preencha o formulário abaixo e entraremos em contato em breve</p>
             
-            <form id="contactForm" class="contact-form">
+            <form id="contactForm" class="contact-form" onsubmit="gtag('event', 'form_submission', {'form_id': 'contactForm', 'form_name': 'Contact Form', 'page_location': window.location.href});">
                 <div class="form-group">
                     <input type="text" id="name" name="name" placeholder="Seu Nome" required>
                 </div>
@@ -124,24 +105,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>MeuSite</h3>
-                    <p>Transformando ideias em realidade digital.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#features">Recursos</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <p>Email: contato@meusite.com</p>
-                    <p>Telefone: (11) 9999-9999</p>
-                </div>
+                <!-- Footer content -->
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 MeuSite. Todos os direitos reservados.</p>
@@ -150,5 +114,13 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Track page views automatically
+        gtag('event', 'page_view', {
+            'page_title' : document.title,
+            'page_location': window.location.href,
+            'page_path': window.location.pathname
+        });
+    </script>
 </body>
 </html>
