@@ -1,15 +1,34 @@
+// Importando o script do Google Analytics 4
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'GA_MEASUREMENT_ID'); // Substitua 'GA_MEASUREMENT_ID' pelo seu ID de acompanhamento real
+
 // Menu Mobile Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    // Evento GA4 para click no hamburger
+    gtag('event', 'button_click', {
+        'element_id': 'hamburger',
+        'element_text': 'Menu',
+        'page_location': window.location.href
+    });
 });
 
 // Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        // Evento GA4 para click em link de navegação
+        gtag('event', 'link_click', {
+            'link_url': link.getAttribute('href'),
+            'link_text': link.textContent,
+            'page_location': window.location.href
+        });
     });
 });
 
@@ -29,6 +48,13 @@ contactForm.addEventListener('submit', (e) => {
     // Ocultar formulário e mostrar mensagem de sucesso
     contactForm.style.display = 'none';
     successMessage.classList.add('show');
+    
+    // Evento GA4 para submissão de formulário
+    gtag('event', 'form_submission', {
+        'form_id': contactForm.getAttribute('id'),
+        'form_name': contactForm.getAttribute('name'),
+        'page_location': window.location.href
+    });
     
     // Resetar formulário após 5 segundos e mostrar novamente
     setTimeout(() => {
@@ -52,6 +78,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
+            });
+            
+            // Evento GA4 para click em link com scroll suave
+            gtag('event', 'link_click', {
+                'link_url': this.getAttribute('href'),
+                'link_text': this.textContent,
+                'page_location': window.location.href
             });
         }
     });
@@ -94,4 +127,10 @@ window.addEventListener('scroll', () => {
     }
     
     lastScroll = currentScroll;
+    // Evento GA4 para scroll da página
+    // Nota: Este evento pode ser muito frequente, considere limitar sua frequência ou remover
+    gtag('event', 'page_scroll', {
+        'scroll_depth': currentScroll,
+        'page_location': window.location.href
+    });
 });
